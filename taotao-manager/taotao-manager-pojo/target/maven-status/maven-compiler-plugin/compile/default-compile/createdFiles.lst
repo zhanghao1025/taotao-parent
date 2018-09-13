@@ -6,6 +6,7 @@ com\taotao\pojo\TbContentCategory.class
 com\taotao\pojo\TbItemParamItemExample$Criterion.class
 com\taotao\pojo\TbOrderShippingExample$Criteria.class
 com\taotao\pojo\TbItemExample$Criterion.class
+com\taotao\pojo\TbItemParamChild.class
 com\taotao\pojo\TbItemDesc.class
 com\taotao\pojo\TbItemCatExample$Criterion.class
 com\taotao\pojo\TbOrderItemExample$GeneratedCriteria.class

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.taotao.mapper.TbItemParamChildMapper">
+    <resultMap id="BaseResultMap" type="com.taotao.pojo.TbItemParamChild" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="item_cat_id" property="itemCatId" jdbcType="BIGINT" />
+        <result column="created" property="created" jdbcType="TIMESTAMP" />
+        <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+        <result column="item_cat_name" property="itemCatName" jdbcType="VARCHAR" />
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.taotao.pojo.TbItemParamChild" extends="BaseResultMap" >
+        <result column="param_data" property="paramData" jdbcType="LONGVARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        tip.id,
+        tip.item_cat_id,
+        tip.created,
+        tip.updated,
+        tic.name AS item_cat_name
+    </sql>
+    <sql id="Blob_Column_List" >
+        tip.param_data
+    </sql>
+    <select id="queryParamChildList" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List" />
+        ,
+        <include refid="Blob_Column_List" />
+        FROM
+        tb_item_param tip
+        LEFT JOIN tb_item_cat tic
+        ON tip.item_cat_id = tic.id
+    </select>
+
+</mapper>

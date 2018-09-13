@@ -27,5 +27,4 @@
 	<!-- 设定上传文件大小 -->
 		<property name="maxUploadSize" value="5242880"></property>
 	</bean>
-	<util:properties id="config" location="/taotao-manager-web/src/main/resources/properties/fastbase.properties"></util:properties>
 </beans>
