@@ -35,7 +35,7 @@ public class ItemParamServiceImpl implements ItemParamService {
         TbItemParamExample tbItemParamExample = new TbItemParamExample();
         TbItemParamExample.Criteria criteria = tbItemParamExample.createCriteria();
         criteria.andItemCatIdEqualTo(cid);
-        List<TbItemParam> tbItemParams = itemParamMapper.selectByExample(tbItemParamExample);
+        List<TbItemParam> tbItemParams = itemParamMapper.selectByExampleWithBLOBs(tbItemParamExample);
 
         if (!tbItemParams.isEmpty()){
             return TaotaoResult.ok(tbItemParams.get(0));
@@ -60,5 +60,15 @@ public class ItemParamServiceImpl implements ItemParamService {
 
 
         return easyUIDataGridResult;
+    }
+
+    @Override
+    public TaotaoResult saveparamData(Long cid, String paramData) {
+        return null;
+    }
+
+    @Override
+    public TbItemParamChild getItemParamChildByCid(Long itemCatId) {
+        return null;
     }
 }

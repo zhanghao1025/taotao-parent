@@ -3,6 +3,7 @@ package com.taotao.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,26 +15,26 @@ import com.taotao.pojo.TbItem;
 import com.taotao.service.ItemService;
 
 /**
- * 
+ *
  * @author zhongyuxinxi-02
  *
  */
 @Controller
 @RequestMapping("/item")
 public class ItemController {
-	
-	
-	
+
+
+
 	@Autowired
 	private ItemService itemService;
-	
+
 	@RequestMapping("/{itemId}")
 	@ResponseBody
 	public TbItem getItemById(@PathVariable(value="itemId") Long itemId) {
 		TbItem item = itemService.getItemById(itemId);
 		return item;
 	}
-	
+
 	@RequestMapping("/list")
 	@ResponseBody
 	public EasyUIDataGridResult getItemList (Integer page ,Integer rows) {
@@ -43,11 +44,16 @@ public class ItemController {
 
 	@RequestMapping(value="/save",method=RequestMethod.POST)
 	@ResponseBody
-	public TaotaoResult saveItem(TbItem tbItem ,String desc) {
-		TaotaoResult taotaoResult=itemService.saveItem(tbItem,desc);
-		
+	public TaotaoResult saveItem(TbItem tbItem ,String desc,String paramDate) {
+		TaotaoResult taotaoResult=itemService.saveItem(tbItem,desc,paramDate);
+
 		return taotaoResult;
 	}
-	
+	@RequestMapping(value="/page/{itemId}")
+	public String showItemParam(@PathVariable Long itemId,Model model) {
+		String html=itemService.showItemParam(itemId);
+		model.addAttribute("html",html);
+		return"item-param";
+	}
 
 }
