@@ -31,6 +31,6 @@
 
 	<!-- dao层扫描包的位置 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.taotao.rest.mapper" />
+		<property name="basePackage" value="com.taotao.mapper" />
 	</bean>
 </beans>

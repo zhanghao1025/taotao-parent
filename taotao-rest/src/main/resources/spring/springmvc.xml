@@ -18,8 +18,8 @@
 		<property name="suffix" value=".jsp"></property>
 <!-- 		静态资源映射 -->
 	</bean>
-	<mvc:resources location="/WEB-INF/css/" mapping="/css/**"/>
-	<mvc:resources location="/WEB-INF/js/" mapping="/js/**"/>
+<!--	<mvc:resources location="/WEB-INF/css/" mapping="/css/**"/>
+	<mvc:resources location="/WEB-INF/js/" mapping="/js/**"/>-->
 	
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 <!-- 	设定默认编码 -->
